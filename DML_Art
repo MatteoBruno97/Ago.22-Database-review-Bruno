@@ -1,0 +1,51 @@
+INSERT INTO museums
+(name, city, country)
+VALUE
+("Louvre", "Parigi", "France"),
+("Musei Vaticani", "Roma", "Italy"),
+("National Gallery", "Londra", "UK"),
+("Picasso Museum", "Malaga", "Spain"),
+("Ermitage","San Pietroburgo", "St.Pietroburgo");
+
+INSERT INTO artists
+(first_name, last_name, country)
+VALUE
+("Alessandro", "di Antiochia", "Turkey"),
+("Leonardo", "da Vinci", "Italy"),
+("Michelangelo", "Buonarroti", "Italy"),
+("Pablo","Picasso","Spain"),
+("Raffaello","Sanzio","Italy"),
+("Antonio","Canova","Italy"),
+("Giotto","di Bondone","Italy"),
+("Albrecht","Altdorfer","German"),
+("Pieter","Aertsen","Holland"),
+("Pierre","Andrieu","France");
+
+INSERT INTO artworks
+(title, museum_id, artist_id)
+VALUE
+("Venere di Milo", 1, 1),
+("Gioconda", 1, 2), 
+("Giudizio Universale", 2, 3),
+("Siesta", 4, 4),
+("Madonna Conestabile", 5, 5),
+("Amore e Psiche", 5, 6),
+("Polittico Stefaneschi", 2, 7),
+("Commiato di Cristo dalla madre", 3, 8),
+("Scene della vita di un santo vescovo", 3, 9),
+("Natura morta con frutta e fiori", 3, 10);
+
+INSERT INTO characters
+(name, artwork_id)
+VALUE
+("Venere", 1),
+("Monna Lisa", 2),
+("Ultima venuta di Cristo", 3),
+("Personaggi anonimi", 4),
+("Madonna", 5),
+("Amore e Psiche", 6),
+("Madonna", 7),
+("Madonna", 8),
+("Vescovo", 9),
+("Natura morta", 10);
+
