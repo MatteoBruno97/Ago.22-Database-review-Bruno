@@ -1,0 +1,86 @@
+/*  a. Le opere d’arte di artisti spagnoli o russi ordinate per titolo dell’opera
+ascendente, e poi per nome del museo in cui sono custodite */
+
+-- ho letto male la query ed ho sostituito artisti russi con tedeschi
+
+SELECT title, name, last_name, artists.country
+FROM artists
+JOIN artworks ON artist_id = artists.id
+JOIN museums ON museum_id = museums.id
+WHERE artists.country = "Spain" OR artists.country = "German"
+ORDER BY title ASC;
+
+/*  b. Il titolo dell’opera (con alias in italiano), il nome e il cognome del loro
+autore concatenati e separati da una virgola (con alias in italiano) e il
+nome del museo (senza alias), delle opere custodite in un museo
+italiano ordinate per lunghezza del nome del museo discendente.*/
+
+-- avendo messo un solo museo in italia l' ordine disc risulerà uguale
+
+SELECT title AS titolo, CONCAT(first_name,",",last_name) AS nome_e_cognome, name, museums.country 
+FROM artists
+JOIN artworks ON artist_id = artists.id
+JOIN museums ON museum_id = museums.id
+WHERE museums.country = "Italy"
+ORDER BY LENGTH(name) DESC;
+
+/*  c. I paese in cui sono custodite le opere d’arte e, per ogni paese, il
+numero di opere custodite (con alias “artworks_number”). */
+
+SELECT museums.country, COUNT(museum_id) AS artworks_number 
+FROM museums
+JOIN artworks ON museum_id = museums.id
+GROUP BY museums.country;
+
+/*  d. Gli artisti che non hanno alcuna opera d’arte custodita al British
+Museum.  */
+
+SELECT last_name, name 
+FROM artists
+JOIN artworks ON artist_id = artists.id
+JOIN museums ON museum_id = museums.id
+WHERE name != "British Museum";
+
+/*
+e. Gli artisti che hanno almeno 2 opere d’arte custodite al museo del
+Louvre.
+*/
+
+SELECT artists.id, museums.name, artwork_id
+FROM artists
+JOIN artworks ON artist_id = artists.id
+JOIN museums ON museum_id = museums.id
+JOIN characters ON artworks.id = artwork_id
+GROUP BY artists.id
+HAVING SUM(artwork_id) >= 2
+AND museums.name = "Louvre";
+
+/*  f. Il nome (tutto maiuscolo) dei personaggi delle opere d’arte il cui
+cognome dell’autore inizia con la lettera “C”, ordinati per titolo
+dell’opera e poi per nome del personaggio e limitati ai primi 5 risultati. */
+
+SELECT title, UPPER(characters.name), last_name 
+FROM artists
+JOIN artworks ON artist_id = artists.id
+JOIN characters ON artworks.id = artwork_id
+WHERE last_name Like "C%"
+LIMIT 5;
+
+/*  g. Per ciascun museo di Londra, il nome del museo e il numero di opere
+di artisti italiani in essi custodite. */
+
+SELECT museums.country, name, artist_id
+FROM artists
+JOIN artworks ON artist_id = artists.id
+JOIN museums ON museum_id = museums.id
+WHERE museums.country LIKE "Londra" 
+AND artists.country LIKE "Italy";
+
+
+
+
+
+
+
+ 
+
