@@ -1,0 +1,25 @@
+/* 
+2. TRUE or FALSE
+
+1. Il comando DELETE FROM orders oltre ad eliminare tutti i record presenti
+nella tabella orders, reimposta il valore di un eventuale id sintetico a 1.  
+
+FALSO
+
+2. In una query con solo due tabelle, una RIGHT JOIN può essere sostituita con
+una LEFT JOIN invertendo l’ordine delle tabelle tra la clausola FROM e la
+JOIN.    
+
+VERO
+
+3. Per poter utilizzare una colonna come chiave esterna è obbligatorio utilizzare
+la constraint FOREIGN KEY in fase di creazione della tabella.   
+
+FALSO
+
+4. Nella clausola HAVING è possibile sostituire il filtro dato da una funzione di
+aggregazione con il suo alias se essa è già presente nella SELECT.  
+
+VERO
+
+*/
