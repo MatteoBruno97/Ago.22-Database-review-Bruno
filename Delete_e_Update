@@ -1,0 +1,15 @@
+/* 
+Considerato lo schema del database “Art”, scrivere l’interrogazione SQL che:
+
+1. Aggiorna le opere d’arte impostando il loro titolo tutto in maiuscolo e trimmato.
+
+*/
+
+UPDATE artworks
+SET title = TRIM(UPPER(title));
+
+/*
+2. Elimina i musei italiani.
+*/
+
+DELETE FROM museums WHERE country = "Italy";
