@@ -1,0 +1,31 @@
+CREATE SCHEMA Art;
+
+CREATE TABLE Art.museums(
+id int AUTO_INCREMENT PRIMARY KEY,
+name varchar(50),
+city varchar(50),
+country varchar(50)
+);
+
+CREATE TABLE Art.artists(
+id int AUTO_INCREMENT PRIMARY KEY,
+first_name varchar(50),
+last_name varchar(50),
+country varchar(50)
+);
+
+CREATE TABLE Art.artworks(
+id int AUTO_INCREMENT PRIMARY KEY,
+title varchar (50),
+museum_id int,
+artist_id int,
+FOREIGN KEY (museum_id)  REFERENCES  art.museums(id),
+FOREIGN KEY (artist_id) REFERENCES art.artists(id)
+);
+
+CREATE TABLE Art.characters(
+id int AUTO_INCREMENT PRIMARY KEY,
+name varchar(50),
+artwork_id int,
+FOREIGN KEY (artwork_id) REFERENCES art.artworks(id)
+);
